@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+
+@model List<Dish>
+<body>
+    <div class="container-width-50p tac mt-20">
+        <h1>Welcome to CRUDelicious!</h1>
+        <div class="mt-10">
+            <a asp-action="Index">Home</a> | <a asp-action="NewDish">Add a Dish</a>
+        </div>
+    </div>
+    <div class="container-width-50p mt-50">
+        <p class="underline">Check out some recent dishes</p>
+        <div class="mt-10">
+
+        @foreach(Dish dish in Model)
+        {
+            <p><a asp-action="ShowDish" asp-route-id=@dish.DishId>@dish.Name</a> by @dish.Chef</p>
+        }
+        </div>
+    </div>
+</body>
+
+</html>

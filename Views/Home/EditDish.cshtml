@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit a Dish</title>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+@model Dish
+<body>
+    <div class="container-width-50p tac mt-20">
+        <h1>Edit @Model.Name!</h1>
+        <div class="mt-10">
+            <a asp-action="Index">Home</a> | <a asp-action="NewDish">Add a Dish</a>
+        </div>
+    </div>
+    <form asp-action="UpdateDish" asp-controller="Home" asp-route-id="@Model.DishId" method="post" class="container-width-50p mt-50 flex">
+        <div class="flex-2 flex jc-center">
+            <div>
+                <div>
+                    <label asp-for="Chef"></label>
+                    <br />
+                    <input asp-for="Chef" value="@Model.Chef">
+                    <br/>
+                    <span asp-validation-for="Chef" class="red"></span>
+                </div>
+                <div class="mt-20">
+                    <label asp-for="Name"></label>
+                    <br />
+                    <input asp-for="Name" value="@Model.Name">
+                    <br/>
+                    <span asp-validation-for="Name" class="red"></span>
+                </div>
+                <div class="mt-20">
+                    <label asp-for="Calories"></label>
+                    <br />
+                    <input asp-for="Calories" value="@Model.Calories">
+                    <br/>
+                    <span asp-validation-for="Calories" class="red"></span>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 flex jc-center">
+            <div>
+                <label asp-for="Tastiness"></label>
+                <select asp-for="Tastiness" value="@Model.Tastiness">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br/>
+                    <span asp-validation-for="Tastiness" class="red"></span>
+            </div>
+        </div>
+        <div class="flex-2 flex jc-center">
+            <div>
+                <div>
+                    <label asp-for="Text"></label>
+                    <br />
+                    <textarea asp-for="Text" cols="25" rows="3">@Model.Text</textarea>
+                    <br/>
+                    <span asp-validation-for="Text" class="red"></span>
+                </div>
+                <div class="tae mt-50">
+                    <button>Edit Dish</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
